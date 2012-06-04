@@ -1,7 +1,7 @@
 (ns fnjs-app.views.core
   (:use     [ noir.core             :only [ defpage defpartial  ] ]
-            [ fnjs-app.views.common :only [ layout              ] ] )
-;           [ fnjs-app.core         :only [ ...                 ] ] )
+            [ fnjs-app.views.common :only [ layout              ] ]
+            [ fnjs-app.core         :only [ fnjs                ] ] )
   (:require [ noir.response         :as     resp                ]
             [ hiccup.page-helpers   :as     page                ]   ) )
 
@@ -18,17 +18,21 @@
   (page/include-js  "/js/app.js") )
 
 (defpartial root-content []
-  [:h1 "fnjs - functional javascript - app"]
-  [:div#content
-    [:div#in] [:div#out] ]
-  [:button#fnjs.center "!fnjs"] )
+  [:div.center
+    [:p.fixed "fnjs - functional javascript - app"]
+    [:button#fnjs.fixed "!fnjs"]
+    [:button#js.fixed "js!"]
+    [:hr]
+    [:div#content
+      [:div#in] [:div#out] [:div.clear] ]
+    [:hr] ])
 
 ; --
 
 (defpage "/" []
-  (layout :head (root-head) :content (root-content)) )
+  (layout "fnjs-app" :head (root-head) :content (root-content)) )
 
 (defpage [:post "/fnjs"] {:keys [data]}
-  (resp/content-type "text/javascript" "...") )
+  (resp/json (fnjs data)) )
 
 ; --

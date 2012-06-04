@@ -4,10 +4,10 @@
 
 ; --
 
-(defpartial layout [& { :keys [ head content ] }]
+(defpartial layout [title & { :keys [ head content ] }]
   (html5
     [:head
-      [:title "fnjs-app"] head ]
+      [:title title] head ]
     [:body
       [:div#wrapper content] ]))
 

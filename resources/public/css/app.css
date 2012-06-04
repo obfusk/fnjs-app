@@ -1,17 +1,47 @@
 /* TODO */
 
 body {
-  width             : 920px;
+  width             : 90%;
   margin            : 0 auto;
 }
 
 #in, #out {
   background-color  : #eee;
+  width             : 49%;
+  border            : 1px solid #ccc;
+  text-align        : left;
 }
+
+#fnjs, #js {
+  font-size         : 1.2em;
+}
+
+/* -- */
+
+#in {
+  float             : left;
+}
+
+#out {
+  float             : right;
+}
+
+.clear {
+  clear             : both;
+}
+
+/* -- */
 
 .center {
   text-align        : center;
 }
+
+.fixed {
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console",
+    Terminal, monospace; /* from fnjs github template */
+}
+
+/* -- */
 
 .CodeMirror-scroll {
   height            : auto;
@@ -19,3 +49,5 @@ body {
   overflow-x        : auto;
   width             : 100%;
 }
+
+/* -- */
