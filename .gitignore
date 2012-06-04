@@ -1,0 +1,10 @@
+*~
+*.swp
+
+# lein {
+
+/.lein-deps-sum
+/classes/
+/lib/
+
+# } lein

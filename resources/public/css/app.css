@@ -1,0 +1,21 @@
+/* TODO */
+
+body {
+  width             : 920px;
+  margin            : 0 auto;
+}
+
+#output {
+  background-color  : #eee;
+}
+
+.center {
+  text-align        : center;
+}
+
+.CodeMirror-scroll {
+  height            : auto;
+  overflow-y        : hidden;
+  overflow-x        : auto;
+  width             : 100%;
+}
