@@ -1,7 +1,7 @@
 (ns fnjs-app.server
   (:require [ noir.server :as server ]) )
 
-(server/load-views "src/fnjs-app/views/")
+(server/load-views "src/fnjs_app/views/")
 
 (defn -main [& m]
   (let  [ mode  (keyword (or (first m) :dev))
