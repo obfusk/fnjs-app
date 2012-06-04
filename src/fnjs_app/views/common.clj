@@ -4,11 +4,12 @@
 
 ; --
 
-(defpartial layout [title & { :keys [ head content ] }]
+(defpartial layout [title & { :keys [ head content ] }]         ; {{{1
   (html5
     [:head
       [:title title] head ]
     [:body
       [:div#wrapper content] ]))
+                                                                ; }}}1
 
 ; --

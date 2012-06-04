@@ -12,42 +12,30 @@ body {
   text-align        : left;
 }
 
-#fnjs, #js {
-  font-size         : 1.2em;
-}
-
-/* -- */
-
-#in {
-  float             : left;
-}
-
-#out {
-  float             : right;
-}
-
-.clear {
-  clear             : both;
-}
-
-/* -- */
-
-.center {
-  text-align        : center;
-}
+#fnjs, #js  { font-size   : 1.2em;          }
+#info       { border      : 1px solid #ccc; }
+#in         { float       : left;           }
+#out        { float       : right;          }
+.clear      { clear       : both;           }
+.center     { text-align  : center;         }
+.small      { font-size   : .8em;           }
+.error      { color       : red;            }
+.ok         { color       : green;          }
 
 .fixed {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console",
     Terminal, monospace; /* from fnjs github template */
 }
 
-/* -- */
+.CodeMirror-scroll { height : 500px; }
 
+/*
 .CodeMirror-scroll {
   height            : auto;
   overflow-y        : hidden;
   overflow-x        : auto;
   width             : 100%;
 }
+*/
 
 /* -- */
