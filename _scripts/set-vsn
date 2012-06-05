@@ -21,7 +21,7 @@ sed -E -i '~' \
   's!(^\(defproject +fnjs-app +")(.*)(" *)$!\1'"$vsn"'\3!' project.clj
 
 echo 'cfg.clj ...'
-sed -E -i '~' 's!(^\(def +fnjs-vsn +"v)(.*)("\) *)$!\1'"$vsn"'\3!' \
+sed -E -i '~' 's!(^\(def +app-vsn +"v)(.*)("\) *)$!\1'"$vsn"'\3!' \
   src/fnjs_app/cfg.clj
 
 # --
