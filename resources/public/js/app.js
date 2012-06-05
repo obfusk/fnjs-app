@@ -1,13 +1,14 @@
 /* TODO: use fnjs */
 
 $(function () {
-  var url       = '/fnjs';
+  var url_fnjs  = '/fnjs';
+  var url_ex    = '/examples/';
+  var dflt_file = 'overview.fnjs';
   var ellipsis  = '/* ... */';
-  var example   = '(console.log "Hello, World!")';
 
   var cm_in = CodeMirror (
     $('#in')[0], {
-      value: example, mode: 'clojure', lineNumbers: true
+      mode: 'clojure', lineNumbers: true
     }
   );
 
@@ -18,15 +19,13 @@ $(function () {
     }
   );
 
-  var update = function () {
+  var pipe_fnjs = function () {
     var data = {
       data: cm_in.getValue (),
       ugly: $('#ugly').prop ('checked'),
     };
 
-    $.post (url, data, function (data_) {
-      // console.log (data, '-->', data_);
-
+    $.post (url_fnjs, data, function (data_) {
       if (data_.error) {
         $('#info').removeClass ('ok');
         $('#info').addClass ('error');
@@ -40,22 +39,34 @@ $(function () {
     }, 'json');
   };
 
-  var run = function () {
+  var run_js = function () {
     eval (cm_out.getValue ());
   };
 
-  $('body').keypress (function (e) {
+  var load_ex = function () {
+    var url = url_ex + $('#ex').val ();
+
+    $.get (url, function (data) {
+      cm_in.setValue (data);
+    }, 'text');
+  };
+
+  var on_key = function (e) {
     if (e.which == 13) {
       if (e.ctrlKey) {
-        update ();
+        pipe_fnjs ();
         return false;
       } else if (e.altKey) {
-        run ();
+        run_js ();
         return false;
       }
     }
-  });
+  };
 
-  $('#fnjs').click (update);
-  $('#js').click (run);
+  $('#ex').val (dflt_file); load_ex ();
+
+  $('body').keypress (on_key);
+  $('#fnjs').click (pipe_fnjs);
+  $('#js').click (run_js);
+  $('#load').click (load_ex);
 });

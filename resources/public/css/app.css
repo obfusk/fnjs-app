@@ -1,7 +1,8 @@
 /* TODO */
 
 body {
-  width             : 90%;
+  width             : 95%;
+  min-width         : 1250px;
   margin            : 0 auto;
 }
 
@@ -12,22 +13,26 @@ body {
   text-align        : left;
 }
 
-#fnjs, #js  { font-size   : 1.2em;          }
-#info       { border      : 1px solid #ccc; }
 #in         { float       : left;           }
 #out        { float       : right;          }
 .clear      { clear       : both;           }
-.center     { text-align  : center;         }
-.small      { font-size   : .8em;           }
+
+#info       { border      : 1px solid #ccc; }
 .error      { color       : red;            }
 .ok         { color       : green;          }
 
-.fixed {
+#page, button, select {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console",
     Terminal, monospace; /* from fnjs github template */
 }
 
-.CodeMirror-scroll { height : 500px; }
+#examples           { display     : inline; }
+.center             { text-align  : center; }
+.CodeMirror-scroll  { height      : 500px;  }
+
+/* -- */
+
+/* button, select { font-size : 1em; } */
 
 /*
 .CodeMirror-scroll {

@@ -1,15 +1,19 @@
 (ns fnjs-app.views.core
-  (:use     [ noir.core             :only [ defpage defpartial  ] ]
-            [ hiccup.core           :only [ h                   ] ]
-            [ fnjs-app.views.common :only [ layout              ] ]
-            [ fnjs-app.core         :only [ fnjs                ] ] )
-  (:require [ noir.response         :as     resp                ]
-            [ hiccup.page-helpers   :as     page                ]   ) )
+  (:use [ noir.core             :only [ defpage defpartial  ] ]
+        [ hiccup.core           :only [ h                   ] ]
+        [ fnjs-app.views.common :only [ layout              ] ]
+        [ fnjs-app.core         :only [ fnjs                ] ] )
+  (:require [ noir.response       :as resp  ]
+            [ hiccup.page-helpers :as page  ]
+            [ fnjs-app.cfg        :as _c    ] ))
 
 ; --
 
-(def copyright
-  (h "Copyright (C) 2012  Felix C. Stegerman <flx@obfusk.net>") )
+(def title  "fnjs - functional javascript")
+(def keybs  "ctrl+enter: |fnjs; alt+enter: run!")
+(def vsns   (str "fnjs-app " _c/app-vsn "; fnjs " _c/fnjs-vsn))
+
+; --
 
 (defpartial root-head []                                        ; {{{1
   (page/include-css "/css/cm.css")
@@ -23,22 +27,30 @@
                                                                 ; }}}1
 
 (defpartial root-content []                                     ; {{{1
-  [:div.center.fixed
-    [:p "fnjs - functional javascript - app"]
-    [:button#fnjs.fixed "|fnjs"]
-    [:button#js.fixed "!js"]
-    [:input#ugly  { :type "checkbox", :value "ugly"
-                    :checked "checked" }] "|uglify"
+  [:div#page.center
+    [:p (h title) [:br]
+      [:small (h " --> ")
+        [:a { :href (h _c/fnjs-url) } (h _c/fnjs-url)] ]]
+    [:div
+      [:div#examples
+        [:select#ex
+          (for [e (map h _c/examples)] [:option { :value e } e]) ]
+        [:button#load (h "load")] ]
+      (h " /// fnjs --> ")
+      [:button#fnjs (h "|fnjs")] (h " --> ")
+      [:input#ugly  { :type "checkbox", :value (h "ugly")
+                      :checked "checked" }] (h "|uglify")
+      (h " --> js /// ") [:button#js (h "run!")] ]
     [:hr] [:div#content [:div#in] [:div#out] [:div.clear]] [:hr]
-    [:div#info "&nbsp;"]
-    [:p.small (h "[C-Return -> |fnjs; A-Return -> !js]")]
-    [:p.small copyright] ])
+    [:div
+      [:div#info "&nbsp;"]
+      [:small (map h [keybs " /// " vsns " /// " _c/copyright])] ]])
                                                                 ; }}}1
 
 ; --
 
 (defpage "/" []
-  (layout "fnjs-app" :head (root-head) :content (root-content)) )
+  (layout title :head (root-head) :content (root-content)) )
 
 (defpage [:post "/fnjs"] {:keys [data as ugly]}
   (let [ s (fnjs data (= ugly "true")) ]
