@@ -13,15 +13,15 @@ echo 'README ...'
 sed -E -i '~' 's!(^Version *: *v)(.*)$!\1'"$vsn"'!' README
 
 echo 'package.json ...'
-sed -E -i '~' 's!(^ *"version" *: *")(.*)(", *)$!\1'"$vsn"'\3' \
+sed -E -i '~' 's!(^ *"version" *: *")(.*)(", *)$!\1'"$vsn"'\3!' \
   package.json
 
 echo 'project.clj ...'
-sed -E -i '~' 's!(^\(defproject +fnjs +")(.*)(" *)$!\1'"$vsn"'\3!' \
-  project.clj
+sed -E -i '~' \
+  's!(^\(defproject +fnjs-app +")(.*)(" *)$!\1'"$vsn"'\3!' project.clj
 
 echo 'cfg.clj ...'
-sed -E -i '~' 's!(^\(def +fnjs-vsn +"v)(.*)("\) *)$!\1'"$vsn"'!\3' \
+sed -E -i '~' 's!(^\(def +fnjs-vsn +"v)(.*)("\) *)$!\1'"$vsn"'!\3!' \
   src/fnjs_app/cfg.clj
 
 # --
