@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+  echo 'Usage: set-fnjs-vsn <vsn>' >&2
+  exit 1
+fi
+
+# --
+
+vsn="$1"
+
+echo 'project.clj ...'
+sed -E -i '~' 's!(^ *\[ *fnjs +")(.*)(".*)$!\1'"$vsn"'\3!' \
+  project.clj
+
+echo 'cfg.clj ...'
+sed -E -i '~' 's!(^\(def +fnjs-vsn +"v)(.*)("\) *)$!\1'"$vsn"'\3!' \
+  src/fnjs_app/cfg.clj
+
+# --
