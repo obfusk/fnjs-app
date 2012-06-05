@@ -1,4 +1,4 @@
-(defproject fnjs-app "0.0.1"
+(defproject fnjs-app "0.1.0"
   :description  "fnjs - functional javascript - app"
   :main         fnjs-app.server
   :dependencies [ [ org.clojure/clojure "1.3.0" ]
