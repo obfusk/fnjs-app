@@ -1,4 +1,15 @@
-/* TODO */
+/*
+  --                                                              {{{1
+
+  File        : css/app.css
+  Maintainer  : Felix C. Stegerman <flx@obfusk.net>
+  Date        : 2012-06-06
+
+  Copyright   : Copyright (C) 2012  Felix C. Stegerman
+  Licence     : GPLv2 or EPLv1
+
+  --                                                              }}}1
+*/
 
 body {
   width             : 95%;
@@ -7,32 +18,34 @@ body {
 }
 
 #in, #out {
-  background-color  : #eee;
   width             : 49%;
-  border            : 1px solid #ccc;
   text-align        : left;
+  background-color  : #eee;
+  border            : 1px solid #ccc;
 }
-
-#in         { float       : left;           }
-#out        { float       : right;          }
-.clear      { clear       : both;           }
-
-#info       { border      : 1px solid #ccc; }
-.error      { color       : red;            }
-.ok         { color       : green;          }
 
 #page, button, select {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console",
     Terminal, monospace; /* from fnjs github template */
 }
 
-#examples           { display     : inline; }
-.center             { text-align  : center; }
-.CodeMirror-scroll  { height      : 500px;  }
+#in                 { float       : left;           }
+#out                { float       : right;          }
+.clear              { clear       : both;           }
+
+#info               { border      : 1px solid #ccc; }
+.error              { color       : red;            }
+.ok                 { color       : green;          }
+
+#examples           { display     : inline;         }
+.center             { text-align  : center;         }
+.CodeMirror-scroll  { height      : 500px;          }
 
 /* -- */
 
-/* button, select { font-size : 1em; } */
+/*
+button, select { font-size : 1em; }
+*/
 
 /*
 .CodeMirror-scroll {
@@ -43,4 +56,4 @@ body {
 }
 */
 
-/* -- */
+/* vim: set tw=70 sw=2 sts=2 et fdm=marker : */

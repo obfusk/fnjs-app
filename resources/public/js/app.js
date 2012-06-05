@@ -1,15 +1,33 @@
+//  --                                                            {{{1
+//
+//  File        : js/app.js
+//  Maintainer  : Felix C. Stegerman <flx@obfusk.net>
+//  Date        : 2012-06-06
+//
+//  Copyright   : Copyright (C) 2012  Felix C. Stegerman
+//  Licence     : GPLv2 or EPLv1
+//
+//  Depends     : ...
+//  Description : ...
+//
+//  TODO        : ...
+//
+//  --                                                            }}}1
+
 /* TODO: use fnjs */
 
 $(function () {
+  // --
+
   var url_fnjs  = '/fnjs';
   var url_ex    = '/examples/';
   var dflt_file = 'overview.fnjs';
   var ellipsis  = '/* ... */';
 
+  // --
+
   var cm_in = CodeMirror (
-    $('#in')[0], {
-      mode: 'clojure', lineNumbers: true
-    }
+    $('#in')[0], { mode: 'clojure', lineNumbers: true }
   );
 
   var cm_out = CodeMirror (
@@ -19,7 +37,9 @@ $(function () {
     }
   );
 
-  var pipe_fnjs = function () {
+  // --
+
+  var pipe_fnjs = function () {                               //  {{{1
     var data = {
       data: cm_in.getValue (),
       ugly: $('#ugly').prop ('checked'),
@@ -37,21 +57,21 @@ $(function () {
       $('#info').text (data_.error || 'OK');
       cm_out.setValue (data_.result || ellipsis);
     }, 'json');
-  };
+  };                                                          //  }}}1
 
   var run_js = function () {
     eval (cm_out.getValue ());
   };
 
-  var load_ex = function () {
+  var load_ex = function () {                                 //  {{{1
     var url = url_ex + $('#ex').val ();
 
     $.get (url, function (data) {
       cm_in.setValue (data);
     }, 'text');
-  };
+  };                                                          //  }}}1
 
-  var on_key = function (e) {
+  var on_key = function (e) {                                 //  {{{1
     if (e.which == 13) {
       if (e.ctrlKey) {
         pipe_fnjs ();
@@ -61,7 +81,9 @@ $(function () {
         return false;
       }
     }
-  };
+  };                                                          //  }}}1
+
+  // --
 
   $('#ex').val (dflt_file); load_ex ();
 
@@ -69,4 +91,8 @@ $(function () {
   $('#fnjs').click (pipe_fnjs);
   $('#js').click (run_js);
   $('#load').click (load_ex);
+
+  // --
 });
+
+// vim: set tw=70 sw=2 sts=2 et fdm=marker :
