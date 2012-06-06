@@ -1,0 +1,82 @@
+--                                                                {{{1
+
+File        : README
+Maintainer  : Felix C. Stegerman <flx@obfusk.net>
+Date        : 2012-06-06
+
+Copyright   : Copyright (C) 2012  Felix C. Stegerman
+Version     : v0.1.0
+
+--                                                                }}}1
+
+=== Description ===                                               {{{1
+
+  fnjs-app - a web-app frontend for fnjs
+
+  The main page allows you to:
+    * edit fnjs code (with syntax highlighting, thanks to codemirror)
+    * have it converted to javascript (with optional uglification)
+    * see the fnjs code and generated javascript side-by-side
+
+  You can also:
+    * load examples (including overview.fnjs)
+    * run the generated javascript
+                                                                  }}}1
+
+=== Links ===                                                     {{{1
+
+  http://fnjs.herokuapp.com           (online version)
+  https://github.com/obfusk/fnjs-app  (source)
+  https://github.com/obfusk/fnjs      (fnjs)
+                                                                  }}}1
+
+=== License ===                                                   {{{1
+
+  GPLv2 [1] or EPLv1 [2].
+                                                                  }}}1
+
+=== Depends ===                                                   {{{1
+
+  * leiningen   (build)
+  * uglify-js   (prettify)
+
+  Uses: noir, fnjs; codemirror, jquery.
+                                                                  }}}1
+
+=== Heroku ===                                                    {{{1
+
+  To run the app on heroku, you need to set these variables.
+
+  BUILDPACK_URL
+  https://github.com/ddollar/heroku-buildpack-multi.git#7b9aaa58ec
+
+  PATH
+  bin:node_modules/uglify-js/bin:.lein/bin:/usr/local/bin:/usr/bin:/bin
+                                                                  }}}1
+
+=== TODO ===                                                      {{{1
+
+  * app.js -> app.fnjs (-> app.js)
+  * ...
+                                                                  }}}1
+
+=== Notes ===                                                     {{{1
+
+  This is where dependencies' versions are specified:
+    * package.json
+    * project.clj
+    * src/fnjs_app/cfg.clj
+                                                                  }}}1
+
+=== References ===                                                {{{1
+
+  [1] GNU General Public License, version 2
+      http://www.opensource.org/licenses/GPL-2.0
+
+  [2] Eclipse Public License, version 1
+      http://www.opensource.org/licenses/EPL-1.0
+                                                                  }}}1
+
+--
+
+vim: set tw=70 sw=2 sts=2 et fdm=marker :
