@@ -39,13 +39,24 @@ $(function () {
 
   // --
 
+  var do_ajax = function (type, url, data, dt, f) {           //  {{{1
+    $.ajax ({
+      type: type, url: url, data: data, dataType: dt, success: f,
+      error: function (xhr, stat, err) {
+        alert (
+          'AJAX ' + stat + ' [' + url + ']: ' + (err || '(failed)')
+        );
+      },
+    });
+  };                                                          //  }}}1
+
   var pipe_fnjs = function () {                               //  {{{1
     var data = {
       data: cm_in.getValue (),
       ugly: $('#ugly').prop ('checked'),
     };
 
-    $.post (url_fnjs, data, function (data_) {
+    do_ajax ('POST', url_fnjs, data, 'json', function (data_) {
       if (data_.error) {
         $('#info').removeClass ('ok');
         $('#info').addClass ('error');
@@ -56,7 +67,7 @@ $(function () {
 
       $('#info').text (data_.error || 'OK');
       cm_out.setValue (data_.result || ellipsis);
-    }, 'json');
+    });
   };                                                          //  }}}1
 
   var run_js = function () {
@@ -66,9 +77,9 @@ $(function () {
   var load_ex = function () {                                 //  {{{1
     var url = url_ex + $('#ex').val ();
 
-    $.get (url, function (data) {
+    do_ajax ('GET', url, null, 'text', function (data) {
       cm_in.setValue (data);
-    }, 'text');
+    });
   };                                                          //  }}}1
 
   var on_key = function (e) {                                 //  {{{1

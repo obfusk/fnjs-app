@@ -19,7 +19,7 @@
 
 ; --
 
-(def app-vsn    "v0.1.0")
+(def app-vsn    "v0.1.1")
 (def fnjs-vsn   "v0.1.1")
 
 (def jquery-vsn "1.7.2")
